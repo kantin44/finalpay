@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment KANTIN DIGITAL</title>
+    <title>Kantin Digital</title>
     <style>
         /* Gaya CSS untuk tampilan */
         body {
@@ -18,17 +18,33 @@
         .container {
             text-align: center;
             background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
         }
-        button {
-            margin: 10px;
-            padding: 10px 20px;
+        .payment-method {
+            margin: 10px 0;
+        }
+        .payment-button {
+            padding: 15px 20px;
             cursor: pointer;
             border: none;
             border-radius: 5px;
             background: #007bff;
             color: white;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .payment-button:hover {
+            background: #0056b3;
+        }
+        .back-button {
+            background: #dc3545;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background: #c82333;
         }
     </style>
 </head>
@@ -36,11 +52,24 @@
 
 <div class="container">
     <h2>Pilih Metode Pembayaran</h2>
-    <button onclick="showNumber('DANA')">DANA</button>
-    <button onclick="showNumber('OVO')">0V0</button>
-    <button onclick="showNumber('GOPAY')">GOPAY</button>
-    <button onclick="showNumber('QRIS')">QRIS</button>
-    <button onclick="goBack()">Kembali</button>
+    
+    <div class="payment-method">
+        <button class="payment-button" onclick="showNumber('DANA')">DANA</button>
+    </div>
+    
+    <div class="payment-method">
+        <button class="payment-button" onclick="showNumber('OVO')">OVO</button>
+    </div>
+    
+    <div class="payment-method">
+        <button class="payment-button" onclick="showNumber('GOPAY')">GOPAY</button>
+    </div>
+    
+    <div class="payment-method">
+        <button class="payment-button" onclick="showQRIS()">QRIS</button>
+    </div>
+
+    <button class="payment-button back-button" onclick="goBack()">Kembali</button>
 </div>
 
 <script>
@@ -56,17 +85,24 @@
             case 'GOPAY':
                 number = 'Nomor Gopay: 0881025907406';
                 break;
-            case 'QRIS':
-                number = 'QRIS code akan muncul di layar';
-                break;
             default:
                 number = 'Metode tidak dikenali';
         }
         alert(number);
     }
 
+    function showQRIS() {
+        const imageUrl = 'https://files.catbox.moe/udw03p.jpg';
+        const a = document.createElement('a');
+        a.href = imageUrl;
+        a.download = 'QRIS_Image.jpg';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.location.href = imageUrl; // Redirect after download
+    }
+
     function goBack() {
-        // Logika untuk kembali ke tampilan sebelumnya
         window.history.back();
     }
 </script>
