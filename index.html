@@ -26,7 +26,7 @@
         .payment-method {
             margin: 10px 0;
         }
-        .payment-button {
+        .payment-button, .copy-button {
             padding: 15px 20px;
             cursor: pointer;
             border: none;
@@ -36,7 +36,7 @@
             font-size: 16px;
             transition: background-color 0.3s;
         }
-        .payment-button:hover {
+        .payment-button:hover, .copy-button:hover {
             background: #0056b3;
         }
         .back-button {
@@ -55,18 +55,21 @@
     
     <div class="payment-method">
         <button class="payment-button" onclick="showNumber('DANA')">DANA</button>
+        <button class="copy-button" onclick="copyToClipboard('0881025907406')">Salin</button>
     </div>
     
     <div class="payment-method">
         <button class="payment-button" onclick="showNumber('OVO')">OVO</button>
+        <button class="copy-button" onclick="copyToClipboard('0881025907406')">Salin</button>
     </div>
     
     <div class="payment-method">
         <button class="payment-button" onclick="showNumber('GOPAY')">GOPAY</button>
+        <button class="copy-button" onclick="copyToClipboard('0881025907406')">Salin</button>
     </div>
     
     <div class="payment-method">
-        <button class="payment-button" onclick="showQRIS()">QRIS</button>
+        <button class="payment-button" onclick="window.open('https://files.catbox.moe/udw03p.jpg')">QRIS</button> <!-- Updated to open link -->
     </div>
 
     <button class="payment-button back-button" onclick="goBack()">Kembali</button>
@@ -91,15 +94,12 @@
         alert(number);
     }
 
-    function showQRIS() {
-        const imageUrl = 'https://files.catbox.moe/udw03p.jpg';
-        const a = document.createElement('a');
-        a.href = imageUrl;
-        a.download = 'QRIS_Image.jpg';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.location.href = imageUrl; // Redirect after download
+    function copyToClipboard(value) {
+        navigator.clipboard.writeText(value).then(function() {
+            alert('Nomor telah disalin: ' + value);
+        }, function(err) {
+            alert('Gagal menyalin: ', err);
+        });
     }
 
     function goBack() {
