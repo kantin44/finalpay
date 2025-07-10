@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment KANTIN DIGITAL</title>
+    <style>
+        /* Gaya CSS untuk tampilan */
+        body {
+            background: linear-gradient(to bottom, #1a1a5e, #2a2a91);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Pilih Metode Pembayaran</h2>
+    <button onclick="showNumber('DANA')">0881025907406</button>
+    <button onclick="showNumber('OVO')">0881025907406</button>
+    <button onclick="showNumber('GOPAY')">0881025907406</button>
+    <button onclick="showNumber('QRIS')">https://files.catbox.moe/udw03p.jpg</button>
+    <button onclick="goBack()">Kembali</button>
+</div>
+
+<script>
+    function showNumber(method) {
+        let number;
+        switch (method) {
+            case 'DANA':
+                number = 'Nomor DANA: 0881025907406';
+                break;
+            case 'OVO':
+                number = 'Nomor OVO: 0881025907406';
+                break;
+            case 'GOPAY':
+                number = 'Nomor Gopay: 0881025907406';
+                break;
+            case 'QRIS':
+                number = 'QRIS code akan muncul di layar';
+                break;
+            default:
+                number = 'Metode tidak dikenali';
+        }
+        alert(number);
+    }
+
+    function goBack() {
+        // Logika untuk kembali ke tampilan sebelumnya
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>
